@@ -1,23 +1,26 @@
-# EasyRemind — deploy to remind.easydo.ai
+# EasyRemind · EasyDo Utilities
 
-Static site. No build step, no server, no database (v1 stores data in the browser).
+Live: **https://remind.easydo.ai**, served by GitHub Pages from this repo (`main` branch, root).
 
-## Option A — Vercel (recommended, 5 minutes)
-1. Push this `deploy/` folder to a GitHub repo (e.g. `easydo/easyremind`).
-2. vercel.com → Add New → Project → import the repo. Framework: **Other**. Root: `/`. Deploy.
-3. Project → Settings → Domains → add `remind.easydo.ai`.
-4. In your DNS for easydo.ai add:  `CNAME  remind  cname.vercel-dns.com`
-5. Wait for the green check. HTTPS is automatic.
+## Files
+- `src/artifact.html`: the single source (styles + markup + script, body-only). Also published as a claude.ai artifact.
+- `scripts/build.py`: wraps the source into `index.html`. Run it after every change.
+- `index.html`: the built page that remind.easydo.ai serves. Don't edit it by hand.
+- `CNAME`, `.nojekyll`, `manifest.json`: GitHub Pages settings.
 
-## Option B — Cloudflare Pages
-1. pages.cloudflare.com → Create → Upload assets → drag this folder.
-2. Custom domains → `remind.easydo.ai` (if easydo.ai DNS is on Cloudflare it's one click; otherwise CNAME to `<project>.pages.dev`).
+## Layout
+- **Left sidebar:** vertical tabs, one per utility app (EasyDo Utilities). EasyRemind is the first.
+- **Right side:** the active app's page, with a header and section tabs: Overview, Subscriptions, Calendar, Analytics, Settings.
+- **Phone:** the sidebar opens as a drawer from the ☰ button.
+- **Deep links:** `#remind.overview`, `#remind.subscriptions`, `#remind.calendar`, `#remind.analytics`, `#remind.settings`. Old links like `#calendar` still work.
 
-## Option C — any static host / your own nginx
-Serve `index.html` at the root. Nothing else required.
+## Add a new utility app
+1. In `src/artifact.html`, add an entry to `APPS`: `{id, name, tag, icon, sections, badge(), summary(), actions(), render(sec)}`.
+2. Add its strings to `T.en` and `T.bn`, and give it its own `localStorage` key.
+3. Keep or remove the "More utilities · Coming soon" placeholder in `sideHtml()`.
+4. Run `python3 scripts/build.py`, commit and push. Pages redeploys in about a minute.
 
-## v2 (accounts + cloud sync) prerequisites
-- A Supabase project (free tier): URL + anon key.
-- Resend (email reminders) API key.
-- Stripe + SSLCommerz keys for Pro billing.
-Storage is isolated in `Store.load/save` inside index.html, so the Supabase adapter swaps in there.
+## Data
+- EasyRemind data lives in the browser (`localStorage` key `easyremind.v1`), so it stays on one browser and one device. Settings has Export and Import (JSON).
+- Suite preferences (language, theme) live under `easydo.suite.v1`.
+- v2 (accounts + cloud sync) needs a Supabase project; the swap point is `Store.load/save`.
