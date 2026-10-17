@@ -222,6 +222,60 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .remind .row{align-items:flex-start}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:.9rem;z-index:90;box-shadow:var(--shadow);max-width:calc(100vw - 32px)}
 
+
+/* tasks app */
+.tk{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;align-items:start}
+.tk.nodetail{grid-template-columns:minmax(0,1fr)}
+.qadd{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:8px}
+.qadd:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.qadd svg{width:18px;height:18px;color:var(--accent);flex:none}
+.qadd input{flex:1;border:0;background:transparent;outline:none;font-size:.98rem;min-width:0}
+.qadd .hint{font-size:.72rem;color:var(--fg-3);white-space:nowrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.8rem;font-weight:600;color:var(--fg-2)}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.chip .dotc{width:9px;height:9px;border-radius:3px;flex:none}
+.chip.on .dotc{outline:2px solid rgba(255,255,255,.6)}
+.chip svg{width:13px;height:13px}
+.tlist{display:flex;flex-direction:column;gap:3px}
+.tsec{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);padding:14px 6px 5px;display:flex;gap:8px;align-items:center}
+.tsec b{font-family:var(--font-mono);color:var(--fg-3);font-weight:600}
+.trow{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;border-radius:9px;cursor:pointer;background:var(--surface);border:1px solid var(--line);min-width:0}
+.trow:hover{border-color:var(--accent)}
+.trow.sel{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.trow.done{opacity:.55}
+.trow.done .tt{text-decoration:line-through}
+.chk{width:18px;height:18px;border-radius:50%;border:2px solid var(--fg-3);flex:none;margin-top:3px;display:grid;place-items:center;background:transparent;padding:0;cursor:pointer}
+.chk.p1{border-color:var(--crit)}.chk.p2{border-color:var(--warn)}.chk.p3{border-color:#2f80b5}
+.chk.on{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.chk svg{width:11px;height:11px}
+.trow .tt{font-weight:600;line-height:1.35;word-break:break-word}
+.trow .tm{display:flex;gap:9px;flex-wrap:wrap;font-size:.76rem;color:var(--fg-3);margin-top:2px;align-items:center}
+.trow .tm .due{display:inline-flex;align-items:center;gap:3px}
+.trow .tm .due svg{width:12px;height:12px}
+.trow .tm .due.over{color:var(--crit);font-weight:700}.trow .tm .due.td{color:var(--accent);font-weight:700}
+.tag{padding:0 6px;border-radius:5px;background:var(--surface-2);color:var(--fg-2);font-weight:600}
+.lst{font-weight:700}
+.detail{position:sticky;top:12px}
+.detail textarea{min-height:110px}
+.detail .title-in{font-size:1.05rem;font-weight:700;border:0;background:transparent;padding:4px 0;width:100%;outline:none;font-family:var(--font-display)}
+.subt{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.subt:last-child{border-bottom:0}
+.subt input[type=text]{flex:1;border:0;background:transparent;outline:none;min-width:0}
+.subt.done span{text-decoration:line-through;color:var(--fg-3)}
+.subt .chk{margin:0;width:16px;height:16px}
+.prisel{display:flex;gap:6px}
+.prisel button{flex:1;padding:6px 4px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-size:.8rem;font-weight:600}
+.prisel button.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.prisel button[data-tpri="1"].on{background:var(--crit);border-color:var(--crit);color:#fff}
+.prisel button[data-tpri="2"].on{background:var(--warn);border-color:var(--warn);color:#fff}
+.prisel button[data-tpri="3"].on{background:#2f80b5;border-color:#2f80b5;color:#fff}
+.kbd{font-family:var(--font-mono);font-size:.7rem;padding:1px 5px;border:1px solid var(--line);border-radius:4px;background:var(--surface-2)}
+.ttool{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.ttool input,.ttool select{padding:8px 11px;border-radius:9px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.ttool input{flex:1;min-width:160px}
+@media (max-width:1080px){ .tk{grid-template-columns:minmax(0,1fr) 320px} }
 @media (max-width:1080px){ .g2{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:820px){
   .shell{grid-template-columns:minmax(0,1fr)}
@@ -242,6 +296,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
   .ring{grid-template-columns:1fr}
   .cat .r{grid-template-columns:80px 1fr auto}
   .remind{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto}
+  .tk{grid-template-columns:minmax(0,1fr)}
+  .tk .detail{display:none}
 }
 @media (min-width:821px){ .scrim{display:none!important} }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -294,7 +350,19 @@ en:{
   total:"Total", noMatch:"No subscriptions match these filters.", copied:"Copied",
   suiteSub:"Utilities", apps:"Apps", remindTag:"Subscriptions & bills", moreApps:"More utilities", soon:"Coming soon",
   menu:"Menu", activeSummary:"{n} active · {amt}{per}", prefsAll:"Applies to every EasyDo app", until:"until {d}",
-  dueSoon:"{n} due soon", todayBtn:"Today", prevMonth:"Previous month", nextMonth:"Next month", showing:"Showing {a} of {b}"
+  dueSoon:"{n} due soon", todayBtn:"Today", prevMonth:"Previous month", nextMonth:"Next month", showing:"Showing {a} of {b}",
+  tasksApp:"Tasks", tasksTag:"To-dos, lists & tags", tinbox:"Inbox", ttoday:"Today", tweek:"Next 7 days", tall:"All", tdone:"Completed",
+  tk_lists:"Lists", tk_tags:"Tags", tk_allLists:"All lists", tk_add:"Add a task… e.g. Pay rent tomorrow !high #bills ~Personal", tk_hint:"Enter ↵",
+  tk_empty:"Nothing here. Type a task above and press Enter.", tk_overdue:"Overdue", tk_later:"Later", tk_nodate:"No date",
+  tk_open:"open", tk_due:"Due date", tk_pri:"Priority", pri0:"None", pri1:"High", pri2:"Medium", pri3:"Low",
+  tk_list:"List", tk_tagsF:"Tags (comma-separated)", tk_notes:"Notes", tk_sub:"Subtasks", tk_addSub:"Add a subtask and press Enter",
+  tk_newList:"New list", tk_listName:"List name", tk_color:"Color", tk_delList:"Delete list", tk_confirmDelList:"Delete this list and every task in it?",
+  tk_confirmDel:"Delete this task?", tk_done1:"Done ✓", tk_restore:"Moved back to open", tk_completedOn:"Completed", tk_created:"Added",
+  tk_showDone:"Show completed", tk_hideDone:"Hide completed", tk_clearDone:"Clear completed", tk_search:"Search tasks…",
+  tk_sortDue:"By due date", tk_sortPri:"By priority", tk_sortCreated:"Newest first", tk_create:"Create",
+  tk_sample:"Sample tasks — delete them or add your own.", tk_clearSample:"Remove sample tasks",
+  tk_syntax:"Quick-add: <span class=kbd>today</span> <span class=kbd>tomorrow</span> <span class=kbd>fri</span> <span class=kbd>in 3 days</span> <span class=kbd>25/10</span> · priority <span class=kbd>!high</span> <span class=kbd>!med</span> <span class=kbd>!low</span> · tag <span class=kbd>#name</span> · list <span class=kbd>~name</span>",
+  tk_summary:"{n} open · {d} due today", tk_dueToday:"{n} due today or overdue", tk_tasksFoot:"open tasks", tk_export:"Export tasks (JSON)", tk_import:"Import tasks (JSON)", tk_imported:"Imported {n} tasks"
 },
 bn:{
   dashboard:"ওভারভিউ", subs:"সাবস্ক্রিপশন", calendar:"ক্যালেন্ডার", analytics:"অ্যানালিটিক্স", settings:"সেটিংস",
@@ -330,7 +398,19 @@ bn:{
   total:"মোট", noMatch:"এই ফিল্টারে কোনো সাবস্ক্রিপশন নেই।", copied:"কপি হয়েছে",
   suiteSub:"ইউটিলিটি", apps:"অ্যাপস", remindTag:"সাবস্ক্রিপশন ও বিল", moreApps:"আরও ইউটিলিটি", soon:"শীঘ্রই আসছে",
   menu:"মেনু", activeSummary:"{n}টি চালু · {amt}{per}", prefsAll:"সব EasyDo অ্যাপে প্রযোজ্য", until:"{d} পর্যন্ত",
-  dueSoon:"{n}টি শীঘ্রই চার্জ হবে", todayBtn:"আজ", prevMonth:"আগের মাস", nextMonth:"পরের মাস", showing:"{b}টির মধ্যে {a}টি দেখানো হচ্ছে"
+  dueSoon:"{n}টি শীঘ্রই চার্জ হবে", todayBtn:"আজ", prevMonth:"আগের মাস", nextMonth:"পরের মাস", showing:"{b}টির মধ্যে {a}টি দেখানো হচ্ছে",
+  tasksApp:"টাস্ক", tasksTag:"টু-ডু, লিস্ট ও ট্যাগ", tinbox:"ইনবক্স", ttoday:"আজ", tweek:"আগামী ৭ দিন", tall:"সব", tdone:"সম্পন্ন",
+  tk_lists:"লিস্ট", tk_tags:"ট্যাগ", tk_allLists:"সব লিস্ট", tk_add:"টাস্ক লিখুন… যেমন: বাড়িভাড়া দেওয়া কাল !high #bills ~Personal", tk_hint:"Enter ↵",
+  tk_empty:"এখানে কিছু নেই। উপরে টাস্ক লিখে Enter চাপুন।", tk_overdue:"বাকি পড়ে গেছে", tk_later:"পরে", tk_nodate:"তারিখ নেই",
+  tk_open:"বাকি", tk_due:"শেষ তারিখ", tk_pri:"অগ্রাধিকার", pri0:"নেই", pri1:"উচ্চ", pri2:"মাঝারি", pri3:"কম",
+  tk_list:"লিস্ট", tk_tagsF:"ট্যাগ (কমা দিয়ে)", tk_notes:"নোট", tk_sub:"সাব-টাস্ক", tk_addSub:"সাব-টাস্ক লিখে Enter চাপুন",
+  tk_newList:"নতুন লিস্ট", tk_listName:"লিস্টের নাম", tk_color:"রং", tk_delList:"লিস্ট মুছুন", tk_confirmDelList:"এই লিস্ট ও এর সব টাস্ক মুছবেন?",
+  tk_confirmDel:"এই টাস্ক মুছবেন?", tk_done1:"সম্পন্ন ✓", tk_restore:"আবার বাকি তালিকায় ফিরল", tk_completedOn:"সম্পন্ন", tk_created:"যোগ হয়েছে",
+  tk_showDone:"সম্পন্নগুলো দেখান", tk_hideDone:"সম্পন্নগুলো লুকান", tk_clearDone:"সম্পন্নগুলো মুছুন", tk_search:"টাস্ক খুঁজুন…",
+  tk_sortDue:"তারিখ অনুযায়ী", tk_sortPri:"অগ্রাধিকার অনুযায়ী", tk_sortCreated:"নতুন আগে", tk_create:"তৈরি করুন",
+  tk_sample:"নমুনা টাস্ক — মুছে নিজেরটা যোগ করুন।", tk_clearSample:"নমুনা টাস্ক সরান",
+  tk_syntax:"দ্রুত লেখা: <span class=kbd>আজ</span> <span class=kbd>কাল</span> <span class=kbd>fri</span> <span class=kbd>in 3 days</span> <span class=kbd>25/10</span> · অগ্রাধিকার <span class=kbd>!high</span> <span class=kbd>!med</span> <span class=kbd>!low</span> · ট্যাগ <span class=kbd>#name</span> · লিস্ট <span class=kbd>~name</span>",
+  tk_summary:"{n}টি বাকি · আজ {d}টি", tk_dueToday:"{n}টি আজ বা বাকি পড়ে গেছে", tk_tasksFoot:"টাস্ক বাকি", tk_export:"টাস্ক এক্সপোর্ট (JSON)", tk_import:"টাস্ক ইমপোর্ট (JSON)", tk_imported:"{n}টি টাস্ক ইমপোর্ট হয়েছে"
 }};
 const CATS=["ent","ai","prod","cloud","util","health","edu","fin","other"];
 const CYCLES={weekly:{n:52/12,d:7},monthly:{n:1,m:1},quarterly:{n:1/3,m:3},yearly:{n:1/12,m:12}};
@@ -483,6 +563,11 @@ const I={
  menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>',
  monitor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+ checkSq:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8 12 3 3 5-6"/></svg>',
+ inbox:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg>',
+ tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><path d="M7 7h.01"/></svg>',
+ trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>',
+ calS:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
 };
 
@@ -494,6 +579,13 @@ const APPS=[{
   summary:()=>{ const live=S.subs.filter(isLive); const mo=live.reduce((a,s)=>a+conv(monthly(s),s.cur),0); return t("activeSummary",{n:live.length,amt:fmt(mo),per:t("perMonthShort")}); },
   actions:()=>`<button class="btn primary add" data-add aria-label="${t("add")}">${I.plus}<span class="hide-sm">${t("add")}</span></button>`,
   render:sec=>({dashboard:rDash,subs:rSubs,calendar:rCal,analytics:rAna,settings:rSet})[sec]()
+},{
+  id:"tasks", name:"Tasks", tag:"tasksTag", icon:"checkSq",
+  sections:[["tinbox","inbox","inbox"],["ttoday","today","sun"],["tweek","week","cal"],["tall","all","list"],["tdone","completed","check"]],
+  badge:()=>{ const td=iso(todayD()); return TS.tasks.filter(x=>!x.done&&x.due&&x.due<=td).length; },
+  summary:()=>{ const td=iso(todayD()); return t("tk_summary",{n:TS.tasks.filter(x=>!x.done).length,d:TS.tasks.filter(x=>!x.done&&x.due&&x.due<=td).length}); },
+  actions:()=>`<button class="btn" data-tnewlist aria-label="${t("tk_newList")}">${I.plus}<span class="hide-sm">${t("tk_newList")}</span></button>`,
+  render:sec=>rTasks(sec)
 }];
 const appOf=id=>APPS.find(a=>a.id===id)||APPS[0];
 const LEGACY={dashboard:1,subs:1,calendar:1,analytics:1,settings:1};
@@ -542,7 +634,7 @@ function sideHtml(){
   <div class="side-foot">
     <div class="seg sm" role="group" aria-label="${t("lang")}"><button class="${P.lang==="en"?"on":""}" data-pref="lang" data-v="en" aria-pressed="${P.lang==="en"}">EN</button><button class="${P.lang==="bn"?"on":""}" data-pref="lang" data-v="bn" aria-pressed="${P.lang==="bn"}">বাংলা</button></div>
     <div class="seg sm" role="group" aria-label="${t("theme")}">${themes.map(([v,ic,l])=>`<button class="${P.theme===v?"on":""}" data-pref="theme" data-v="${v}" title="${t(l)}" aria-label="${t(l)}" aria-pressed="${P.theme===v}">${I[ic]}</button>`).join("")}</div>
-    <div class="small muted ver">remind.easydo.ai · v1.1</div>
+    <div class="small muted ver">remind.easydo.ai · v1.2</div>
   </div>`;
 }
 function topHtml(app){
@@ -777,6 +869,128 @@ function closeModal(){ $("layer").innerHTML=""; }
 let toastT; function toast(m){ document.querySelectorAll(".toast").forEach(x=>x.remove()); const el=document.createElement("div"); el.className="toast"; el.setAttribute("role","status"); el.textContent=m; document.body.appendChild(el); clearTimeout(toastT); toastT=setTimeout(()=>el.remove(),1800); }
 function markPaid(key){ S.charges[key]={status:"paid",paidAt:Date.now()}; persist(); toast(t("paidToast")); closeModal(); render(); }
 
+
+/* ============ Tasks app (TickTick-style) ============ */
+/* task: {id,title,notes,due:"YYYY-MM-DD"|"",pri:0 none|1 high|2 med|3 low,list:"inbox"|listId,tags:[],subs:[{id,title,done}],done,doneAt,created,sample} */
+const TKEY="easytasks.v1";
+let TS=Store.load(TKEY)||{tasks:[],lists:[],seeded:false};
+if(!Array.isArray(TS.tasks)) TS.tasks=[]; if(!Array.isArray(TS.lists)) TS.lists=[];
+const persistT=()=>Store.save(TKEY,TS);
+let tsel=null, tq="", tsort="due", tShowDone=false, tfilter=null; /* tfilter: null | {list:id} | {tag:name} */
+const LIST_COLORS=["#5b6ee1","#2a7d4f","#c2553f","#8a63d2","#b4720a","#2f80b5","#0f7b74","#6b7f78"];
+const listOf=id=>TS.lists.find(l=>l.id===id);
+const slugT=s=>s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,"-").replace(/^-|-$/g,"")||uid();
+const weekIso=()=>{ const x=todayD(); x.setDate(x.getDate()+7); return iso(x); };
+const isMobile=()=>!!(window.matchMedia&&window.matchMedia("(max-width:820px)").matches);
+function seedTasks(){ const td=todayD(); const d=n=>{ const x=new Date(td); x.setDate(x.getDate()+n); return iso(x); };
+  TS.seeded=true; if(!listOf("work")) TS.lists.push({id:"work",name:"Work",color:"#5b6ee1"}); if(!listOf("personal")) TS.lists.push({id:"personal",name:"Personal",color:"#2a7d4f"});
+  [["Review this month's subscriptions in EasyRemind",d(0),1,"work",["finance"],[["Check price rises",false],["Cancel what I don't use",false]]],
+   ["Pay internet bill",d(1),2,"personal",["bills"],[]],
+   ["Call accountant about VAT return",d(3),2,"work",[],[]],
+   ["Plan weekend trip",d(6),3,"personal",["family"],[]],
+   ["Read the AI strategy paper",d(-1),0,"inbox",["reading"],[]],
+   ["Renew passport",d(20),0,"personal",[],[]]
+  ].forEach(([title,due,pri,list,tags,subs])=>TS.tasks.push({id:uid(),title,notes:"",due,pri,list,tags,subs:subs.map(([tt,dn])=>({id:uid(),title:tt,done:dn})),done:false,created:Date.now(),sample:true}));
+  persistT(); }
+if(!TS.tasks.length&&!TS.seeded) seedTasks();
+
+/* quick-add parser: dates (today/tomorrow/weekday/in N days/25/10/2026-10-25, Bangla আজ/কাল), !high/!med/!low, #tag, ~list */
+function parseQuick(s){ const td=todayD(); let title=" "+s+" ", due="", pri=0, list=null, tags=[];
+  const rep=(re,fn)=>{ title=title.replace(re,(...a)=>{ fn(...a); return " "; }); };
+  const setD=n=>{ const x=new Date(td); x.setDate(x.getDate()+n); due=iso(x); };
+  rep(/\s!(high|h|1)(?=\s)/gi,()=>pri=1); rep(/\s!(med|medium|m|2)(?=\s)/gi,()=>pri=2); rep(/\s!(low|l|3)(?=\s)/gi,()=>pri=3);
+  rep(/\s#([\p{L}\p{N}_-]+)/gu,(m,tg)=>tags.push(tg.toLowerCase()));
+  rep(/\s~([\p{L}\p{N}_-]+)/gu,(m,ln)=>{ const l=TS.lists.find(x=>x.name.toLowerCase()===ln.toLowerCase()||x.id===ln.toLowerCase()); list=l?l.id:(/^inbox$/i.test(ln)?"inbox":list); });
+  rep(/\s(\d{4}-\d{2}-\d{2})(?=\s)/,(m,d)=>due=d);
+  rep(/\s(\d{1,2})\/(\d{1,2})(?=\s)/,(m,dd,mm)=>{ let x=new Date(td.getFullYear(),mm-1,dd); if(x<td) x=new Date(td.getFullYear()+1,mm-1,dd); due=iso(x); });
+  rep(/\s(today|tod|আজ|আজকে)(?=\s)/i,()=>setD(0)); rep(/\s(tomorrow|tmr|tmrw|tom|কাল|কালকে|আগামীকাল)(?=\s)/i,()=>setD(1));
+  rep(/\snext week(?=\s)/i,()=>setD(7)); rep(/\sআগামী সপ্তাহ(?=\s)/,()=>setD(7));
+  rep(/\sin (\d+) days?(?=\s)/i,(m,n)=>setD(+n)); rep(/\s(\d+) দিন পর(?=\s)/,(m,n)=>setD(+n));
+  rep(/\s(?:next )?(sunday|monday|tuesday|wednesday|thursday|friday|saturday|sun|mon|tue|tues|wed|thu|thur|thurs|fri|sat)(?=\s)/i,(m,d)=>{ const i=["sun","mon","tue","wed","thu","fri","sat"].indexOf(d.toLowerCase().slice(0,3)); let n=(i-td.getDay()+7)%7; if(n===0) n=7; setD(n); });
+  return {title:title.replace(/\s+/g," ").trim(),due,pri,list,tags}; }
+
+function addTask(raw){ const p=parseQuick(raw); if(!p.title) return;
+  let list=p.list||"inbox", due=p.due, tags=p.tags;
+  if(tfilter&&tfilter.list&&!p.list) list=tfilter.list;
+  if(tfilter&&tfilter.tag&&!tags.includes(tfilter.tag)) tags.push(tfilter.tag);
+  if(route.sec==="ttoday"&&!due) due=iso(todayD());
+  if(route.sec==="tinbox") list="inbox";
+  TS.tasks.unshift({id:uid(),title:p.title,notes:"",due,pri:p.pri,list,tags,subs:[],done:false,created:Date.now()}); persistT(); render(); const el=$("tq-add"); if(el) el.focus(); }
+function toggleTask(id){ const x=TS.tasks.find(y=>y.id===id); if(!x) return; x.done=!x.done; x.doneAt=x.done?Date.now():null; persistT(); toast(x.done?t("tk_done1"):t("tk_restore")); render(); refreshMobileDetail(); }
+function openTask(id){ tsel=id; render(); if(isMobile()) showModal(`<div style="padding:4px">${tDetail(id)}</div>`); }
+function refreshMobileDetail(){ if(isMobile()&&tsel&&$("tdetail")){ const x=TS.tasks.find(y=>y.id===tsel); if(x) showModal(`<div style="padding:4px">${tDetail(tsel)}</div>`); else closeModal(); } }
+function setField(id,f,v){ const x=TS.tasks.find(y=>y.id===id); if(!x) return; if(f==="tags") x.tags=v.split(",").map(s=>s.trim().replace(/^#/,"").toLowerCase()).filter(Boolean); else x[f]=v; persistT(); }
+
+function tPred(sec){ const td=iso(todayD()), wk=weekIso();
+  const base=sec==="tinbox"?x=>x.list==="inbox":sec==="ttoday"?x=>x.due&&x.due<=td:sec==="tweek"?x=>x.due&&x.due<=wk:()=>true;
+  const f=tfilter?(tfilter.list?x=>x.list===tfilter.list:x=>x.tags.includes(tfilter.tag)):()=>true;
+  return x=>base(x)&&f(x); }
+function tFilter(sec,done=false){ const p=tPred(sec); let l=TS.tasks.filter(x=>p(x)&&x.done===(sec==="tdone"?true:done));
+  if(tq){ const q=tq.toLowerCase(); l=l.filter(x=>(x.title+" "+x.notes+" "+x.tags.join(" ")).toLowerCase().includes(q)); }
+  return l; }
+function tSort(l){ const pr=x=>x.pri===0?4:x.pri;
+  return l.sort((a,b)=>{ if(tsort==="pri") return pr(a)-pr(b)||(a.due||"9999").localeCompare(b.due||"9999"); if(tsort==="created") return b.created-a.created; return (a.due||"9999").localeCompare(b.due||"9999")||pr(a)-pr(b)||b.created-a.created; }); }
+function dowName(d){ return ({en:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],bn:["রবি","সোম","মঙ্গল","বুধ","বৃহ","শুক্র","শনি"]})[P.lang==="bn"?"bn":"en"][d.getDay()]; }
+function tGroups(sec,l){ const td=iso(todayD()), wk=weekIso();
+  if(sec==="tdone"){ const g={}; l.slice().sort((a,b)=>(b.doneAt||0)-(a.doneAt||0)).forEach(x=>{ const k=x.doneAt?iso(new Date(x.doneAt)):""; (g[k]=g[k]||[]).push(x); }); return Object.keys(g).sort().reverse().map(k=>[k?(k===td?t("ttoday"):fmtDate(parse(k))):"",g[k]]); }
+  if(sec==="tweek"||sec==="ttoday"){ const g={}; l.forEach(x=>{ const k=x.due<td?"0000-overdue":x.due; (g[k]=g[k]||[]).push(x); }); return Object.keys(g).sort().map(k=>[k==="0000-overdue"?t("tk_overdue"):k===td?t("ttoday"):fmtDate(parse(k))+" · "+dowName(parse(k)),g[k]]); }
+  const g={over:[],today:[],week:[],later:[],none:[]}; l.forEach(x=>{ if(!x.due) g.none.push(x); else if(x.due<td) g.over.push(x); else if(x.due===td) g.today.push(x); else if(x.due<=wk) g.week.push(x); else g.later.push(x); });
+  return [[t("tk_overdue"),g.over],[t("ttoday"),g.today],[t("tweek"),g.week],[t("tk_later"),g.later],[t("tk_nodate"),g.none]].filter(x=>x[1].length); }
+
+function tChips(sec){ const open=x=>!x.done; const cnt=f=>TS.tasks.filter(x=>open(x)&&f(x)).length;
+  const lists=sec==="tinbox"?"":`<button class="chip ${!tfilter?"on":""}" data-tfilter="">${t("tk_allLists")}</button>`+
+    TS.lists.map(l=>`<button class="chip ${tfilter&&tfilter.list===l.id?"on":""}" data-tfilter="list:${esc(l.id)}"><span class="dotc" style="background:${l.color}"></span>${esc(l.name)}${cnt(x=>x.list===l.id)?` <b class="num">${cnt(x=>x.list===l.id)}</b>`:""}</button>`).join("");
+  const tags=[...new Set(TS.tasks.filter(open).flatMap(x=>x.tags))].sort();
+  const tg=tags.map(g=>`<button class="chip ${tfilter&&tfilter.tag===g?"on":""}" data-tfilter="tag:${esc(g)}">${I.tag}#${esc(g)}</button>`).join("");
+  if(!lists&&!tg) return ""; return `<div class="chips">${lists}${lists&&tg?`<span class="muted small" style="margin:0 4px">·</span>`:""}${tg}</div>`; }
+
+function tRow(x){ const td=iso(todayD()); const l=listOf(x.list); const ds=x.subs.filter(s=>s.done).length;
+  return `<div class="trow ${x.done?"done":""} ${x.id===tsel?"sel":""}" data-topen="${x.id}" tabindex="0">
+   <button class="chk p${x.pri} ${x.done?"on":""}" data-tdone="${x.id}" aria-label="toggle">${x.done?I.check:""}</button>
+   <div class="grow"><div class="tt">${esc(x.title)}</div>
+    <div class="tm">${x.due?`<span class="due ${x.due<td&&!x.done?"over":x.due===td?"td":""}">${I.calS}${relDay(parse(x.due))}</span>`:""}${x.subs.length?`<span>☰ ${ds}/${x.subs.length}</span>`:""}${x.notes?`<span>≡</span>`:""}${l?`<span class="lst" style="color:${l.color}">${esc(l.name)}</span>`:""}${x.tags.map(tg=>`<span class="tag">#${esc(tg)}</span>`).join("")}</div></div></div>`; }
+
+function tDetail(id){ const x=TS.tasks.find(y=>y.id===id); if(!x) return "";
+  return `<div class="panel detail" id="tdetail">
+   <div class="panel-h"><div class="row" style="gap:8px"><button class="chk p${x.pri} ${x.done?"on":""}" style="margin:0" data-tdone="${x.id}">${x.done?I.check:""}</button><span class="small muted">${x.done&&x.doneAt?t("tk_completedOn")+" "+fmtDate(new Date(x.doneAt)):t("tk_created")+" "+fmtDate(new Date(x.created))}</span></div>
+    <div class="actions"><button class="iconbtn" data-tdel="${x.id}" title="${t("delete")}" aria-label="${t("delete")}">${I.trash}</button><button class="iconbtn" data-tclose title="${t("cancel")}" aria-label="${t("cancel")}">${I.x}</button></div></div>
+   <div class="stack" style="gap:12px">
+    <input class="title-in" data-tf="title" data-tid="${x.id}" value="${esc(x.title)}" aria-label="${t("name")}">
+    <div class="f2"><div class="field"><label>${t("tk_due")}</label><input type="date" data-tf="due" data-tid="${x.id}" value="${x.due}"></div>
+     <div class="field"><label>${t("tk_list")}</label><select data-tf="list" data-tid="${x.id}"><option value="inbox" ${x.list==="inbox"?"selected":""}>${t("tinbox")}</option>${TS.lists.map(l=>`<option value="${esc(l.id)}" ${l.id===x.list?"selected":""}>${esc(l.name)}</option>`).join("")}</select></div></div>
+    <div class="field"><label>${t("tk_pri")}</label><div class="prisel">${[1,2,3,0].map(p=>`<button class="${x.pri===p?"on":""}" data-tpri="${p}" data-tid="${x.id}">${t("pri"+p)}</button>`).join("")}</div></div>
+    <div class="field"><label>${t("tk_tagsF")}</label><input data-tf="tags" data-tid="${x.id}" value="${esc(x.tags.join(", "))}"></div>
+    <div class="field"><label>${t("tk_sub")}</label><div>${x.subs.map(s=>`<div class="subt ${s.done?"done":""}"><button class="chk ${s.done?"on":""}" data-tsub="${x.id}|${s.id}">${s.done?I.check:""}</button><span class="grow">${esc(s.title)}</span><button class="iconbtn" style="width:26px;height:26px;border:0" data-tsubdel="${x.id}|${s.id}" aria-label="${t("delete")}">${I.x}</button></div>`).join("")}
+     <div class="subt"><span class="muted" style="width:16px;text-align:center">+</span><input type="text" id="td-newsub" data-tid="${x.id}" placeholder="${t("tk_addSub")}"></div></div></div>
+    <div class="field"><label>${t("tk_notes")}</label><textarea data-tf="notes" data-tid="${x.id}">${esc(x.notes)}</textarea></div>
+   </div></div>`; }
+
+function rTasks(sec){ if(tfilter&&tfilter.list&&!listOf(tfilter.list)) tfilter=null;
+  const l=tSort(tFilter(sec)); const groups=tGroups(sec,l);
+  const doneExtra=tShowDone&&sec!=="tdone"?tFilter(sec,true).sort((a,b)=>(b.doneAt||0)-(a.doneAt||0)):[];
+  const lo=tfilter&&tfilter.list?listOf(tfilter.list):null;
+  const td=todayD(); const over=TS.tasks.filter(x=>!x.done&&x.due&&x.due<iso(td)).length;
+  const showDetail=tsel&&!isMobile()&&TS.tasks.some(x=>x.id===tsel);
+  return `
+  <div class="viewbar" style="margin-bottom:8px"><div><h2>${esc(lo?lo.name:tfilter?"#"+tfilter.tag:t(sec))}</h2><div class="small muted">${sec==="tdone"?l.length:`${l.length} ${t("tk_open")}${over&&sec!=="ttoday"?` · <span style="color:var(--crit)">${over} ${t("tk_overdue").toLowerCase()}</span>`:""}`} · ${fmtDate(td)} ${dowName(td)}</div></div>
+   <div class="actions">${lo?`<button class="btn sm danger" data-tdellist="${esc(lo.id)}">${I.trash}<span class="hide-sm">${t("tk_delList")}</span></button>`:""}${sec==="tdone"?`<button class="btn sm" data-tclear-done>${t("tk_clearDone")}</button>`:`<button class="btn sm ${tShowDone?"primary":""}" data-tshowdone>${tShowDone?t("tk_hideDone"):t("tk_showDone")}</button>`}</div></div>
+  ${TS.tasks.some(x=>x.sample)?`<div class="notice">${t("tk_sample")} <button class="btn sm" data-tclear-sample style="margin-left:6px">${t("tk_clearSample")}</button></div>`:""}
+  <div class="tk ${showDetail?"":"nodetail"}"><div>
+   ${sec!=="tdone"?`<div class="qadd">${I.plus}<input id="tq-add" placeholder="${t("tk_add")}" autocomplete="off" aria-label="${t("tk_add")}"><span class="hint">${t("tk_hint")}</span></div><div class="small muted" style="margin:0 0 4px 4px">${t("tk_syntax")}</div>`:""}
+   ${tChips(sec)}
+   <div class="ttool"><input id="tq-search" placeholder="${t("tk_search")}" value="${esc(tq)}" aria-label="${t("tk_search")}"><select id="tq-sort" aria-label="sort"><option value="due" ${tsort==="due"?"selected":""}>${t("tk_sortDue")}</option><option value="pri" ${tsort==="pri"?"selected":""}>${t("tk_sortPri")}</option><option value="created" ${tsort==="created"?"selected":""}>${t("tk_sortCreated")}</option></select></div>
+   ${groups.length?groups.map(([h,items])=>`${h?`<div class="tsec">${h}<b>${items.length}</b></div>`:""}<div class="tlist">${items.map(tRow).join("")}</div>`).join(""):`<div class="empty">${t("tk_empty")}</div>`}
+   ${doneExtra.length?`<div class="tsec">${t("tdone")}<b>${doneExtra.length}</b></div><div class="tlist">${doneExtra.map(tRow).join("")}</div>`:""}
+   ${sec==="tdone"?`<div class="actions" style="margin-top:18px"><button class="btn sm" data-texport>${t("tk_export")}</button><label class="btn sm">${t("tk_import")}<input type="file" id="t-import" accept="application/json" hidden></label></div><textarea id="t-exp" hidden style="width:100%;min-height:120px;margin-top:10px;font-family:var(--font-mono);font-size:.8rem"></textarea>`:""}
+  </div>${showDetail?tDetail(tsel):""}</div>`; }
+
+let tlColor=LIST_COLORS[0];
+function newListModal(){ tlColor=LIST_COLORS[TS.lists.length%LIST_COLORS.length]; showModal(`<div class="mh"><h2>${t("tk_newList")}</h2><button class="iconbtn" data-close aria-label="${t("cancel")}">${I.x}</button></div>
+  <div class="mb"><div class="field"><label>${t("tk_listName")}</label><input id="tl-name"></div>
+  <div class="field"><label>${t("tk_color")}</label><div class="svc-list" id="tl-colors">${LIST_COLORS.map(c=>`<button type="button" data-tcolor="${c}" style="${c===tlColor?"border-color:var(--accent)":""}" aria-label="${c}"><span class="dot" style="background:${c}"></span></button>`).join("")}</div></div></div>
+  <div class="mf"><button class="btn" data-close>${t("cancel")}</button><button class="btn primary" data-tcreate-list>${t("tk_create")}</button></div>`); }
+function createList(){ const n=($("tl-name")||{}).value||""; const name=n.trim(); if(!name) return; let id=slugT(name); while(id==="inbox"||listOf(id)) id+="-"+Math.random().toString(36).slice(2,5); TS.lists.push({id,name,color:tlColor}); persistT(); closeModal(); tfilter={list:id}; tsel=null; if(route.sec==="tinbox"||route.sec==="tdone") go({app:"tasks",sec:"tall"}); else render(); }
+
 /* ============ Reminders ============ */
 const shownKeys=new Set();
 function checkReminders(){
@@ -793,10 +1007,28 @@ function checkReminders(){
 
 /* ============ Events ============ */
 document.addEventListener("click",e=>{
-  const b=e.target.closest("[data-sec],[data-app],[data-drawer],[data-drawer-close],[data-pref],[data-add],[data-open],[data-paid],[data-snooze],[data-close],[data-close-bg],[data-edit],[data-del],[data-save],[data-cal],[data-notif],[data-export],[data-wipe],[data-load-sample],[data-clear-sample],[data-svc]");
+  const b=e.target.closest("[data-tfilter],[data-tdone],[data-topen],[data-tdel],[data-tclose],[data-tpri],[data-tsub],[data-tsubdel],[data-tnewlist],[data-tcreate-list],[data-tcolor],[data-tdellist],[data-tclear-done],[data-tshowdone],[data-tclear-sample],[data-texport],[data-sec],[data-app],[data-drawer],[data-drawer-close],[data-pref],[data-add],[data-open],[data-paid],[data-snooze],[data-close],[data-close-bg],[data-edit],[data-del],[data-save],[data-cal],[data-notif],[data-export],[data-wipe],[data-load-sample],[data-clear-sample],[data-svc]");
   if(!b) return;
   const d=b.dataset;
-  if(d.sec){ go({sec:d.sec},{focusTab:b.classList.contains("sectab")}); return; }
+  /* tasks */
+  if(d.tfilter!==undefined){ const v=d.tfilter; tfilter=!v?null:v.startsWith("list:")?{list:v.slice(5)}:{tag:v.slice(4)}; tsel=null; render(); return; }
+  if(d.tdone){ toggleTask(d.tdone); return; }
+  if(d.topen){ if(e.target.closest("input,select,textarea,button")) return; openTask(d.topen); return; }
+  if(b.hasAttribute("data-tclose")){ tsel=null; closeModal(); render(); return; }
+  if(d.tdel){ const id=d.tdel; confirmBox(t("tk_confirmDel"),()=>{ TS.tasks=TS.tasks.filter(x=>x.id!==id); if(tsel===id) tsel=null; persistT(); toast(t("deleted")); render(); }); return; }
+  if(d.tpri!==undefined){ setField(d.tid,"pri",+d.tpri); render(); refreshMobileDetail(); return; }
+  if(d.tsub){ const [tid,sid]=d.tsub.split("|"); const x=TS.tasks.find(y=>y.id===tid); const s=x&&x.subs.find(z=>z.id===sid); if(s){ s.done=!s.done; persistT(); render(); refreshMobileDetail(); } return; }
+  if(d.tsubdel){ const [tid,sid]=d.tsubdel.split("|"); const x=TS.tasks.find(y=>y.id===tid); if(x){ x.subs=x.subs.filter(z=>z.id!==sid); persistT(); render(); refreshMobileDetail(); } return; }
+  if(b.hasAttribute("data-tnewlist")){ newListModal(); return; }
+  if(b.hasAttribute("data-tcreate-list")){ createList(); return; }
+  if(d.tcolor){ tlColor=d.tcolor; document.querySelectorAll("#tl-colors button").forEach(x=>x.style.borderColor=x===b?"var(--accent)":"var(--line)"); return; }
+  if(d.tdellist){ const id=d.tdellist; confirmBox(t("tk_confirmDelList"),()=>{ TS.lists=TS.lists.filter(l=>l.id!==id); TS.tasks=TS.tasks.filter(x=>x.list!==id); tfilter=null; tsel=null; persistT(); render(); }); return; }
+  if(b.hasAttribute("data-tclear-done")){ confirmBox(t("tk_clearDone")+"?",()=>{ TS.tasks=TS.tasks.filter(x=>!x.done); persistT(); render(); }); return; }
+  if(b.hasAttribute("data-tshowdone")){ tShowDone=!tShowDone; render(); return; }
+  if(b.hasAttribute("data-tclear-sample")){ TS.tasks=TS.tasks.filter(x=>!x.sample); persistT(); render(); return; }
+  if(b.hasAttribute("data-texport")){ const ta=$("t-exp"); ta.hidden=false; ta.value=JSON.stringify({app:"EasyTasks",version:1,exported:new Date().toISOString(),tasks:TS.tasks,lists:TS.lists},null,2); ta.select(); try{ navigator.clipboard.writeText(ta.value).then(()=>toast(t("copied"))).catch(()=>{}); }catch(_){} return; }
+  /* shell + easyremind */
+  if(d.sec){ tsel=null; go({sec:d.sec},{focusTab:b.classList.contains("sectab")}); return; }
   if(d.app){ if(d.app!==route.app) go({app:d.app,sec:appOf(d.app).sections[0][0]}); if(drawerOpen) setDrawer(false); return; }
   if(b.hasAttribute("data-drawer")){ setDrawer(!drawerOpen); return; }
   if(b.hasAttribute("data-drawer-close")){ setDrawer(false); return; }
@@ -819,7 +1051,11 @@ document.addEventListener("click",e=>{
   if(d.svc){ const c=CATALOGUE.find(x=>x.slug===d.svc); if(!c) return; $("f-name").value=c.name; $("f-amount").value=c.price; $("f-cur").value=c.cur; $("f-cycle").value=c.cycle; $("f-cat").value=c.cat; $("f-svc").value=c.slug; $("f-amount").focus(); return; }
 });
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){ if($("layer").innerHTML){ closeModal(); return; } if(drawerOpen){ setDrawer(false); return; } }
+  if(e.key==="Escape"){ if($("layer").innerHTML){ closeModal(); return; } if(drawerOpen){ setDrawer(false); return; } if(route.app==="tasks"&&tsel){ tsel=null; render(); return; } }
+  if(e.key==="Enter"&&e.target.id==="tq-add"){ e.preventDefault(); addTask(e.target.value); return; }
+  if(e.key==="Enter"&&e.target.id==="td-newsub"){ e.preventDefault(); const x=TS.tasks.find(y=>y.id===e.target.dataset.tid); const v=e.target.value.trim(); if(x&&v){ x.subs.push({id:uid(),title:v,done:false}); persistT(); render(); refreshMobileDetail(); const n=$("td-newsub"); if(n) n.focus(); } return; }
+  if(e.key==="Enter"&&e.target.id==="tl-name"){ e.preventDefault(); createList(); return; }
+  if(e.key==="Enter"&&e.target.classList&&e.target.classList.contains("trow")){ e.preventDefault(); openTask(e.target.dataset.topen); return; }
   const tab=e.target.closest&&e.target.closest(".sectab");
   if(tab&&["ArrowRight","ArrowLeft","Home","End"].includes(e.key)){
     e.preventDefault();
@@ -832,12 +1068,17 @@ document.addEventListener("keydown",e=>{
 });
 document.addEventListener("input",e=>{
   const el=e.target;
+  if(el.id==="tq-search"){ tq=el.value; const pos=el.selectionStart; render(); const n=$("tq-search"); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } return; }
+  if(el.dataset&&el.dataset.tf&&(el.dataset.tf==="title"||el.dataset.tf==="notes")){ setField(el.dataset.tid,el.dataset.tf,el.value); if(el.dataset.tf==="title"){ const r=document.querySelector(`.trow[data-topen="${el.dataset.tid}"] .tt`); if(r) r.textContent=el.value; } return; }
   if(el.id==="fl-q"){ filt.q=el.value; const pos=el.selectionStart; render(); const n=$("fl-q"); if(n){ n.focus(); try{ n.setSelectionRange(pos,pos); }catch(_){} } }
   if(el.id==="s-payers"){ S.settings.payers=el.value; persist(); }
   if(el.dataset&&el.dataset.rate){ const v=parseFloat(el.value); if(v>0){ S.settings.rates[el.dataset.rate]=v; persist(); } }
 });
 document.addEventListener("change",e=>{
   const el=e.target;
+  if(el.id==="tq-sort"){ tsort=el.value; render(); return; }
+  if(el.dataset&&el.dataset.tf){ setField(el.dataset.tid,el.dataset.tf,el.value); if(el.dataset.tf!=="notes") render(); return; }
+  if(el.id==="t-import"){ const f=el.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ const d=JSON.parse(r.result); if(Array.isArray(d.tasks)){ TS.tasks=d.tasks; if(Array.isArray(d.lists)) TS.lists=d.lists; TS.seeded=true; persistT(); toast(t("tk_imported",{n:d.tasks.length})); render(); } }catch(_){} }; r.readAsText(f); return; }
   if(el.id==="fl-cat"){ filt.cat=el.value; render(); }
   if(el.id==="fl-st"){ filt.status=el.value; render(); }
   if(el.id==="fl-sort"){ filt.sort=el.value; render(); }
